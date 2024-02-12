@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import Error from '../../components/Error'
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -20,7 +19,7 @@ export const register = createAsyncThunk(
             setAuthHeader(res.data.token);
             return res.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(<Error msg={error.message} />);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
@@ -33,7 +32,7 @@ export const login = createAsyncThunk(
             setAuthHeader(res.data.token);
             return res.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(<Error msg={error.message} />);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
@@ -45,7 +44,7 @@ export const logOut = createAsyncThunk(
             await axios.post('users/logout');
             clearAuthHeader();
         } catch (error) {
-            return thunkAPI.rejectWithValue(<Error msg={error.message} />);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
@@ -57,7 +56,7 @@ export const refreshUser = createAsyncThunk(
         const persistedToken = state.auth.token;
 
         if (persistedToken === null) {
-            return thunkAPI.rejectWithValue(<Error msg={'Unable to fetch user'} />);
+            return thunkAPI.rejectWithValue('Unable to fetch user');
         }
 
         try {
@@ -65,7 +64,7 @@ export const refreshUser = createAsyncThunk(
             const res = await axios.get('/users/me');
             return res.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(<Error msg={error.message} />);
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 );

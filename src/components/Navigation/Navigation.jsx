@@ -1,20 +1,23 @@
-import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks';
+import { Logo, LogoContainer, StyledLink } from './Navigation.styled';
+import { RiContactsBook2Fill } from "react-icons/ri";
 
 const Navigation = () => {
     const { isLoggedIn } = useAuth();
 
     return (
-        <nav>
-            <NavLink to='/'>
+        <LogoContainer>
+            <RiContactsBook2Fill size={33} color="white" />
+            <Logo>PhoneBook</Logo>
+            <StyledLink to='/'>
                 Home
-            </NavLink>
+            </StyledLink>
             {isLoggedIn && (
-                <NavLink to='/contacts'>
+                <StyledLink to='/contacts'>
                     Contacts
-                </NavLink>
+                </StyledLink>
             )}
-        </nav>
+        </LogoContainer>
     );
 };
 

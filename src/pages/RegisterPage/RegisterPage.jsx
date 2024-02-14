@@ -1,6 +1,14 @@
+import { Helmet } from "react-helmet";
+import RegisterForm from "../../components/RegisterForm";
+
 const RegisterPage = () => {
     return (
-        <h1>RegisterPage</h1>
+        <div>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
+            <RegisterForm />
+        </div>
     );
 }
 

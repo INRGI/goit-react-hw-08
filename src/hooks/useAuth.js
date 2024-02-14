@@ -5,7 +5,7 @@ export const useAuth = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
     const isRefreshing = useSelector(selectIsRefreshing);
     const user = useSelector(selectUser);
-    return (
+    return {
         isLoggedIn, isRefreshing, user
-    );
+    };
 };

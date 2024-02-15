@@ -10,7 +10,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
 
     const schema = Yup.object({
-                email: Yup.string().email('Invalid email address').required('Required'),
+                email: Yup.string().email('Invalid email address').required('Please enter an email address'),
                 password: Yup
                     .string()
                     .required("Please enter a password")

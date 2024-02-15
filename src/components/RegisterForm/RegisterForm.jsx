@@ -1,8 +1,10 @@
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { register } from '../../redux/auth/operations';
+import { Button, Container, Input, Title } from './RegisterForm.styled';
+import Error from '../Error';
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -18,7 +20,7 @@ const RegisterForm = () => {
         <Formik
             initialValues={{ email: '', password: '', name: '' }}
             validationSchema={Yup.object({
-                email: Yup.string().email('Invalid email address').required('Required'),
+                email: Yup.string().email('Invalid email address').required('Please enter an email address'),
                 password: Yup
                     .string()
                     .required("Please enter a password")
@@ -26,22 +28,22 @@ const RegisterForm = () => {
                 name: Yup.string().required("Please enter an username").min(4,"Username must have at least 4 characters")
             })}
             onSubmit={handleSubmit}
+            validateOnBlur={false}
+            validateOnChange={false}
         >
-            <Form>
-                <label htmlFor="name">Name</label>
-                <Field name="name" type="text" />
-                <ErrorMessage name="name" />
+            <Container>
+                <Title>Register</Title>
+                <Input name="name" type="text" placeholder="Name" />
+                <ErrorMessage name="name">{msg => <Error msg={msg} />}</ErrorMessage>
 
-                <label htmlFor="email">Email</label>
-                <Field name="email" type="text" />
-                <ErrorMessage name="email" />
+                <Input name="email" type="text" placeholder="Email" />
+                <ErrorMessage name="email">{msg => <Error msg={msg} />}</ErrorMessage>
 
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="password" />
-                <ErrorMessage name="password" />
+                <Input name="password" type="password" placeholder="Password"/>
+                <ErrorMessage name="password">{msg => <Error msg={msg} />}</ErrorMessage>
 
-                <button type="submit">Submit</button>
-            </Form>
+                <Button type="submit">Submit</Button>
+            </Container>
         </Formik>
     );
 };

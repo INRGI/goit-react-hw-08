@@ -3,7 +3,7 @@ import { selectContacts, selectError, selectIsLoading } from '../../redux/contac
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { Helmet } from "react-helmet";
-import { Container, EmptyTitle } from "./ContactsPage.styled";
+import { ContactsContainer, Container, EmptyTitle } from "./ContactsPage.styled";
 import Loader from '../../components/Loader';
 import Filter from "../../components/Filter";
 import ContactsList from "../../components/ContactsList";
@@ -24,7 +24,8 @@ const ContactsPage = () => {
             <Helmet>
                 <title>Your Contacts</title>
             </Helmet>
-            <ContactsForm />
+          <ContactsForm />
+          <ContactsContainer>      
             {isLoading && !error ? (<Loader />) :
           contacts.length > 0 ? (
               <>
@@ -34,7 +35,8 @@ const ContactsPage = () => {
             ) : (
               <EmptyTitle>Your phonebook is empty.</EmptyTitle>
             )
-        }
+          }
+          </ContactsContainer>
         </Container>
     );
 }

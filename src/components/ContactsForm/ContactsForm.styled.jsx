@@ -11,7 +11,7 @@ export const Container = styled.div`
     width: 400px;
     margin-left: 20px;
     border: 1.5px solid;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(34, 34, 34, 0.35) 0px 5px 15px;
     border-radius: 5px;
 `;
 

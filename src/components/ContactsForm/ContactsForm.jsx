@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { selectVisibleContacts } from '../../redux/contacts/selectors';
 import { addContact } from '../../redux/contacts/operations';
-import { toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Formik, ErrorMessage, Form } from 'formik';
 import Error from "../Error";
@@ -15,8 +15,8 @@ const initialValues = {
 };
 
 const FeedbackSchema = Yup.object().shape({
-    name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required"),
-    number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Required")
+    name: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Please enter a name"),
+    number: Yup.string().min(3, "Too Short!").max(50, "Too Long!").required("Please enter a number")
 });
 
 const ContactsForm = () => {
@@ -47,6 +47,18 @@ const ContactsForm = () => {
 
         dispatch(addContact(values));
         actions.resetForm();
+
+        toast.success('Contact successfully added', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     };
 
     return (

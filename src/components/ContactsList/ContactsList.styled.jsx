@@ -58,10 +58,11 @@ export const Contact = styled.li`
     justify-content: space-between;
     font-size: 20px;
     align-items: center;
-    border: 1.5px solid;
+    border: 1px solid;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 10px;
+    padding: 9px;
     border-radius: 5px;
     max-width: 800px;
     width: 95%;
+    margin-left:5px;
 `;

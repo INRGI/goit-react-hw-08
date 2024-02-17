@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const Input = styled.input`
     display: block;
     height: 50px;
-    width: 90%;
+    width: 85%;
+    max-width: 800px;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;

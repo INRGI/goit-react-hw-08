@@ -6,6 +6,7 @@ const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
             isOpen={isOpen}
             onRequestClose={onClose}
             contentLabel="Delete Confirmation Modal"
+            ariaHideApp={false}
         >
             <Title>Are you sure you want to delete this contact?</Title>
             <ButtonsContainer>

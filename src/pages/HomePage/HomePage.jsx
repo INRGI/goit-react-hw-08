@@ -1,13 +1,17 @@
 import { Helmet } from "react-helmet";
+import { Container, ContainerBlock, Title } from "./HomePage.styled";
 
 const HomePage = () => {
     return (
-        <div>
+        <Container>
             <Helmet>
                 <title>Home</title>
             </Helmet>
-            <h1>HomePage</h1>
-        </div>
+            <ContainerBlock>
+                <Title>One Contact Book, Endless Devices</Title>
+            </ContainerBlock>
+            
+        </Container>
         
     );
 }
